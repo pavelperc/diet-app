@@ -14,7 +14,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         btnGoogleSignIn.setOnClickListener {
-            startActivity<MainActivity>()
+            login()
         }
+        login()
+    }
+
+    private fun login() {
+        startActivity<MainActivity>()
+        finish()
     }
 }

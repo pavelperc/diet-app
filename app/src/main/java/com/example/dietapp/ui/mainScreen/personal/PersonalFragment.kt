@@ -22,10 +22,6 @@ class PersonalFragment : Fragment() {
         personalViewModel =
             ViewModelProvider(this).get(PersonalViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_personal, container, false)
-        val textView: TextView = root.findViewById(R.id.tvText)
-        personalViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }

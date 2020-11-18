@@ -21,10 +21,7 @@ class ExploreFragment : Fragment() {
     ): View? {
         exploreViewModel = ViewModelProvider(this).get(ExploreViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_explore, container, false)
-        val textView: TextView = root.findViewById(R.id.tvText)
-        exploreViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         return root
     }
 }
