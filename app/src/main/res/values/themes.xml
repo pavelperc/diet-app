@@ -4,6 +4,7 @@
         <item name="colorPrimary">@color/light_blue</item>
         <item name="colorPrimaryDark">@color/darker_blue</item>
         <item name="buttonStyle">@style/Button</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Button" parent="android:Widget.Material.Button.Borderless">
@@ -13,5 +14,9 @@
         <item name="android:elevation">8dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Button.Borderless" parent="android:Widget.Material.Button.Borderless">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 </resources>

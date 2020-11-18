@@ -1,11 +1,11 @@
 package com.example.dietapp.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dietapp.R
 import com.example.dietapp.ui.mainScreen.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.startActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
-        startActivity<MainActivity>()
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 }
