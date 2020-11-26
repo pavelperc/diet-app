@@ -34,7 +34,7 @@
         android:paddingHorizontal="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSearch"
+        android:id="@+id/rvProducts"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

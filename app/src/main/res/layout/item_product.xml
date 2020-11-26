@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice"
+        android:textColor="@color/black"
+        android:textSize="23sp" />
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TableRow>
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nFactor: " />
+
+            <TextView
+                android:id="@+id/tvNFactor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,23" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="proFactor: " />
+
+            <TextView
+                android:id="@+id/tvProFactor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,23" />
+        </LinearLayout>
+    </TableRow>
+    <TableRow>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="fatFactor: " />
+
+            <TextView
+                android:id="@+id/tvFatFactor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,23" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="choFactor: " />
+
+            <TextView
+                android:id="@+id/tvChoFactor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1,23" />
+        </LinearLayout>
+    </TableRow>
+</TableLayout>
+
+</LinearLayout>
