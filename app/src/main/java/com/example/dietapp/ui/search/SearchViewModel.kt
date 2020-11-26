@@ -59,5 +59,4 @@ class SearchViewModel : ViewModel() {
         }
 
     val searchResult = searchResultFlow.asLiveData()
-
 }

@@ -57,9 +57,5 @@ class Repository {
         }
     }
 
-    fun release() {
-        client.connectionPool.evictAll()
-    }
-
     class HttpError(error: String) : RuntimeException(error)
 }
