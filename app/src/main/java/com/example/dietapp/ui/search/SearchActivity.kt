@@ -1,18 +1,17 @@
 package com.example.dietapp.ui.search
 
 import android.os.Bundle
+import android.widget.ToggleButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietapp.R
-import com.example.dietapp.utils.commonUtils.toast
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.launch
 
 @FlowPreview
 @ExperimentalCoroutinesApi
@@ -22,33 +21,76 @@ class SearchActivity : AppCompatActivity() {
         ProductListAdapter()
     }
 
+    private val dishListAdapter by lazy {
+        DishListAdapter()
+    }
+
+    private val dietListAdapter by lazy {
+        DietListAdapter()
+    }
+
     val searchViewModel by viewModels<SearchViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         toolbar.setNavigationOnClickListener { onBackPressed() }
-        rvProducts.adapter = productListAdapter
-        rvProducts.layoutManager = LinearLayoutManager(this)
+        rvItems.adapter = productListAdapter
+        rvItems.layoutManager = LinearLayoutManager(this)
 
-        searchViewModel.searchResult.observe(this) { handleSearchResult(it) }
+        searchViewModel.searchProducts.observe(this) { handleSearchResult(it) }
+
+        setupFilterButtons()
 
         etSearch.doAfterTextChanged { text ->
-            lifecycleScope.launch {
-                searchViewModel.queryChannel.send(text.toString())
-            }
+            searchViewModel.latestQuery = text.toString()
+        }
+    }
+
+    private fun setupFilterButtons() {
+        val filterButtons = listOf(btnDiets, btnDishes, btnProducts)
+        fun select(button: ToggleButton) {
+            filterButtons.forEach { it.isChecked = it == button }
+        }
+        btnProducts.setOnClickListener {
+            select(btnProducts)
+            searchViewModel.filter = SearchViewModel.Filter.Products
+        }
+        btnDishes.setOnClickListener {
+            select(btnDishes)
+            searchViewModel.filter = SearchViewModel.Filter.Dishes
+        }
+        btnDiets.setOnClickListener {
+            select(btnDiets)
+            searchViewModel.filter = SearchViewModel.Filter.Diets
         }
     }
 
 
     private fun handleSearchResult(result: SearchResult) {
+        rvItems.isVisible = result.isSuccessful
+        llPlaceholder.isVisible = !result.isSuccessful
+        tvError.isVisible = result is ErrorResult
+
         when (result) {
-            is ValidResult -> {
+            is ProductsResult -> {
                 productListAdapter.products = result.products
+                rvItems.adapter = productListAdapter
+            }
+            is DishesResult -> {
+                dishListAdapter.dishes = result.dishes
+                rvItems.adapter = dishListAdapter
+            }
+            is DietsResult -> {
+                dietListAdapter.diets = result.diets
+                rvItems.adapter = dietListAdapter
             }
             is ErrorResult -> {
-                productListAdapter.products = emptyList()
-                toast(result.e.message ?: "Some error")
+                tvError.text = result.e.message ?: "Unknown error"
+                tvPlaceholderText.text = getString(R.string.error_placeholder)
+            }
+            is EmptyResult -> {
+                tvPlaceholderText.text = getString(R.string.search_placeholder)
             }
         }
 

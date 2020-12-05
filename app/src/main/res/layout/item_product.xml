@@ -12,83 +12,64 @@
         android:text="Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice"
         android:textColor="@color/black"
         android:textSize="23sp" />
-<TableLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TableRow>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_weight="2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="nFactor: " />
+                android:text="Calories: " />
 
             <TextView
-                android:id="@+id/tvNFactor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1,23" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:id="@+id/tvCalories"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="1,234" />
+
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="proFactor: " />
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:text="Proteins: " />
 
             <TextView
-                android:id="@+id/tvProFactor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1,23" />
-        </LinearLayout>
-    </TableRow>
-    <TableRow>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                android:id="@+id/tvProteins"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="1,234" />
+        </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="fatFactor: " />
+        <TableRow>
 
-            <TextView
-                android:id="@+id/tvFatFactor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1,23" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="choFactor: " />
+                <TextView
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:text="Fats: " />
 
-            <TextView
-                android:id="@+id/tvChoFactor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1,23" />
-        </LinearLayout>
-    </TableRow>
-</TableLayout>
+                <TextView
+                    android:id="@+id/tvFats"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="1,234" />
+
+                <TextView
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:text="Carbohydrates: " />
+
+                <TextView
+                    android:id="@+id/tvCarb"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:text="1,234" />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

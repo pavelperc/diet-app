@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Diet App</string>
+    <string name="search_placeholder">Choose a category, type your thing, and let’s find something for you!</string>
+    <string name="error_placeholder">Something went wrong</string>
 </resources>

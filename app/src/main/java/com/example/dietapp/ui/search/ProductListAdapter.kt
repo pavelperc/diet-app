@@ -1,5 +1,6 @@
 package com.example.dietapp.ui.search
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dietapp.R
 import com.example.dietapp.domain.Product
+import java.util.*
 
 class ProductListAdapter() :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
@@ -20,10 +22,10 @@ class ProductListAdapter() :
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         val tvName = root.findViewById<TextView>(R.id.tvName)
-        val tvNFactor = root.findViewById<TextView>(R.id.tvNFactor)
-        val tvProFactor = root.findViewById<TextView>(R.id.tvProFactor)
-        val tvFatFactor = root.findViewById<TextView>(R.id.tvFatFactor)
-        val tvChoFactor = root.findViewById<TextView>(R.id.tvChoFactor)
+        val tvCalories = root.findViewById<TextView>(R.id.tvCalories)
+        val tvProteins = root.findViewById<TextView>(R.id.tvProteins)
+        val tvFats = root.findViewById<TextView>(R.id.tvFats)
+        val tvCarb = root.findViewById<TextView>(R.id.tvCarb)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -33,16 +35,16 @@ class ProductListAdapter() :
         return ViewHolder(root)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val product = products[position]
         viewHolder.tvName.text = product.name
-        viewHolder.tvNFactor.text = product.nFactor.toString().replace(".", ",")
-        viewHolder.tvProFactor.text = product.proFactor.toString().replace(".", ",")
-        viewHolder.tvFatFactor.text = product.fatFactor.toString().replace(".", ",")
-        viewHolder.tvChoFactor.text = product.choFactor.toString().replace(".", ",")
+        viewHolder.tvCalories.text = "%.3f".format(product.calories).replace(".", ",")
+        viewHolder.tvProteins.text = "%.3f".format(product.protein).replace(".", ",")
+        viewHolder.tvFats.text = "%.3f".format(product.fat).replace(".", ",")
+        viewHolder.tvCarb.text = "%.3f".format(product.carb).replace(".", ",")
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = products.size
 
 }

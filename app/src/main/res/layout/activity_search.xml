@@ -30,11 +30,90 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:backgroundTint="@color/darker_blue"
-        android:hint="Search products"
+        android:hint="Search products, dishes or diets"
         android:paddingHorizontal="8dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProducts"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/btnProducts"
+            style="@style/Button.Rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:textColor="@drawable/text_color_selector"
+            android:textOff="Products"
+            android:textOn="Products" />
+
+        <ToggleButton
+            android:id="@+id/btnDishes"
+            style="@style/Button.Rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@drawable/text_color_selector"
+            android:textOff="Dishes"
+            android:textOn="Dishes" />
+
+        <ToggleButton
+            android:id="@+id/btnDiets"
+            style="@style/Button.Rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@drawable/text_color_selector"
+            android:textOff="Diets"
+            android:textOn="Diets" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/llPlaceholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_water" />
+
+            <TextView
+                android:id="@+id/tvPlaceholderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/search_placeholder"
+                android:textAlignment="center"
+                android:textColor="@color/light_blue"
+                android:textSize="22sp" />
+            <TextView
+                android:visibility="gone"
+                tools:visibility="visible"
+                android:id="@+id/tvError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Very very long exception error"
+                android:textAlignment="center"
+                android:textColor="@color/light_blue"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

@@ -16,6 +16,10 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Button.Rounded" parent="Button">
+        <item name="android:background">@drawable/bg_button_rounded</item>
+    </style>
+
     <style name="Button.Borderless" parent="android:Widget.Material.Button.Borderless">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
