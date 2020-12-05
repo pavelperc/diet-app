@@ -23,7 +23,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private val dishListAdapter by lazy {
-        DishListAdapter()
+        DishListAdapter(this)
     }
 
     private val dietListAdapter by lazy {

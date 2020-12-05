@@ -1,44 +1,62 @@
 package com.flamingo.dietapp.repository
 
-import com.flamingo.dietapp.domain.Diet
-import com.flamingo.dietapp.domain.Dish
-import com.flamingo.dietapp.domain.Product
+import com.flamingo.dietapp.domain.*
 import kotlinx.coroutines.delay
+import kotlin.random.Random
 
-class TestRepository: Repository {
+class TestRepository : Repository {
 
     override suspend fun findProducts(query: String): List<Product> {
         delay(300)
-        return listOf(
-            Product.basic(1, "Milk", 1.0, 2.0, 3.0, 4.0),
-            Product.basic(2, "Milk2", 1.0, 2.0, 3.0, 4.0),
-            Product.basic(3, "Milk3", 1.0, 2.0, 3.0, 4.0),
-            Product.basic(4, "Milk4", 1.0, 2.0, 3.0, 4.0),
-            Product.basic(5, "Eggs", 2.0, 3.0, 4.0, 5.0),
-            Product.basic(6, "Apple", 3.0, 2.0, 0.0, 3.0),
-            Product.basic(6, "Apple juice", 3.0, 2.0, 0.0, 3.0),
-            Product.basic(6, "Orange juice", 3.0, 2.0, 0.0, 3.0),
-            Product.basic(7, "Beaf1", 1.0, 2.0, 3.0, 1.0),
-            Product.basic(8, "Beaf2", 1.0, 2.0, 3.0, 1.0),
-            Product.basic(9, "Beaf3", 1.0, 2.0, 3.0, 1.0),
-        ).filter { it.name.contains(query, true) }
+        return productsBase.filter { it.name.contains(query, true) }
     }
+
+    private val productsBase = listOf(
+        Product.basic(1, "Milk", 1.0, 2.0, 3.0, 4.0),
+        Product.basic(2, "Cheese", 1.0, 2.0, 3.0, 4.0),
+        Product.basic(3, "Potato", 1.0, 2.0, 3.0, 4.0),
+        Product.basic(4, "Onion", 1.0, 2.0, 3.0, 4.0),
+        Product.basic(5, "Egg", 2.0, 3.0, 4.0, 5.0),
+        Product.basic(5, "Bread", 2.2, 3.1, 6.0, 5.11),
+        Product.basic(6, "Apple", 3.0, 2.0, 0.0, 3.0),
+        Product.basic(7, "Apple juice", 3.0, 2.0, 0.1, 3.0),
+        Product.basic(8, "Orange juice", 3.0, 2.0, 0.0, 3.0),
+        Product.basic(9, "Beaf", 1.0, 2.0, 3.0, 1.0),
+        Product.basic(10, "Chicken", 1.0, 4.0, 3.0, 1.0),
+        Product.basic(11, "Pork", 1.0, 2.0, 3.0, 2.0),
+    )
+
+    private val randomDishes = List(15) { i -> randomDish(i) }
+    private val randomDiets = List(4) { i -> randomDiet(i) }
 
     override suspend fun allDiets(): List<Diet> {
         delay(300)
-        return listOf(
-            Diet(1, "Diet1"),
-            Diet(2, "Diet2"),
-            Diet(3, "Diet3"),
-        )
+        return randomDiets
     }
 
     override suspend fun allDishes(): List<Dish> {
         delay(300)
-        return listOf(
-            Dish(1, "Dish1"),
-            Dish(2, "Dish2"),
-            Dish(3, "Dish3"),
-        )
+        return randomDishes
     }
+
+    private fun randomDiet(id: Int) = Diet(
+        id.toLong(),
+        "Diet$id",
+        List(Random.nextInt(1, 5)) { i ->
+            DietDay(
+                "Day${i + 1}",
+                randomDishes.shuffled().take(Random.nextInt(2, 4))
+            )
+        }
+    )
+
+    private fun randomDish(id: Int) = Dish(
+        id.toLong(),
+        "Dish$id",
+        assetImage(id),
+        productsBase.shuffled().take(Random.nextInt(1, 5))
+            .map { Ingredient(Random.nextInt(100, 1000), it) }
+    )
+    private fun assetImage(id: Int) = "file:///android_asset/food${(id % 6) + 1}.jpg"
+
 }

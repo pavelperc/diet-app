@@ -30,7 +30,7 @@
                 android:id="@+id/tvCalories"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="1,234" />
+                android:text="1,23" />
 
 
             <TextView
@@ -39,10 +39,10 @@
                 android:text="Proteins: " />
 
             <TextView
-                android:id="@+id/tvProteins"
+                android:id="@+id/tvProtein"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="1,234" />
+                android:text="1,23" />
         </TableRow>
 
         <TableRow>
@@ -51,24 +51,24 @@
                 <TextView
                     android:layout_weight="2"
                     android:layout_width="0dp"
-                    android:text="Fats: " />
+                    android:text="Fat: " />
 
                 <TextView
-                    android:id="@+id/tvFats"
+                    android:id="@+id/tvFat"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:text="1,234" />
+                    android:text="1,23" />
 
                 <TextView
                     android:layout_weight="2"
                     android:layout_width="0dp"
-                    android:text="Carbohydrates: " />
+                    android:text="Carbs: " />
 
                 <TextView
-                    android:id="@+id/tvCarb"
+                    android:id="@+id/tvCarbs"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:text="1,234" />
+                    android:text="1,23" />
         </TableRow>
     </TableLayout>
 
