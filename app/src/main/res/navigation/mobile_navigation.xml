@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/navigation_personal"
-        android:name="com.example.dietapp.ui.mainScreen.personal.PersonalFragment"
+        android:name="com.flamingo.dietapp.ui.mainScreen.personal.PersonalFragment"
         tools:layout="@layout/fragment_personal" />
 
     <fragment
         android:id="@+id/navigation_explore"
-        android:name="com.example.dietapp.ui.mainScreen.explore.ExploreFragment"
+        android:name="com.flamingo.dietapp.ui.mainScreen.explore.ExploreFragment"
         tools:layout="@layout/fragment_explore" />
 </navigation>

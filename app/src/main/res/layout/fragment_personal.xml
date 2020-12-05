@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.mainScreen.explore.ExploreFragment">
 
-    <com.example.dietapp.ui.views.ScalableImageView
+    <com.flamingo.dietapp.ui.views.ScalableImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/bg_personal"
