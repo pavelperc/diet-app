@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.dietapp.BuildConfig
 import com.example.dietapp.Preferences
 import com.example.dietapp.R
 import kotlinx.android.synthetic.main.fragment_personal.*
@@ -27,6 +28,7 @@ class PersonalFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        tvVersion.text = "version ${BuildConfig.VERSION_NAME}"
         swchUseTestData.isChecked = preferences.useTestRepository
         swchUseTestData.setOnCheckedChangeListener { buttonView, isChecked ->
             preferences.useTestRepository = isChecked

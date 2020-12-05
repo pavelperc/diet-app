@@ -43,5 +43,12 @@
             android:layout_gravity="bottom|center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:textColor="#80FFFFFF"
+            android:layout_gravity="bottom|center"
+            android:text="some version"
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
     </FrameLayout>
 </FrameLayout>
