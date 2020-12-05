@@ -1,12 +1,15 @@
 package com.example.dietapp.ui.search
 
+import android.app.Application
 import android.util.Log
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.dietapp.Preferences
 import com.example.dietapp.domain.Diet
 import com.example.dietapp.domain.Dish
 import com.example.dietapp.domain.Product
+import com.example.dietapp.repository.RealRepository
 import com.example.dietapp.repository.Repository
 import com.example.dietapp.repository.TestRepository
 import kotlinx.coroutines.*
@@ -25,7 +28,7 @@ class ErrorResult(val e: Throwable) : SearchResult(false)
 
 @ExperimentalCoroutinesApi
 @FlowPreview
-class SearchViewModel : ViewModel() {
+class SearchViewModel(application: Application) : AndroidViewModel(application) {
 
     companion object {
         val TAG = "SearchViewModel"
@@ -43,8 +46,11 @@ class SearchViewModel : ViewModel() {
             }
         }
 
-    //    val repository: Repository = RealRepository()
-    val repository: Repository = TestRepository()
+    val preferences by lazy { Preferences(application.applicationContext) }
+
+        val repository: Repository by lazy {
+            if (preferences.useTestRepository) TestRepository() else RealRepository()
+        }
 
 
     enum class Filter { Products, Dishes, Diets }

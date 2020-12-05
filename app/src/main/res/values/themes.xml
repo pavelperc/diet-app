@@ -1,10 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DietApp" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.DietApp" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="colorPrimary">@color/light_blue</item>
         <item name="colorPrimaryDark">@color/darker_blue</item>
+        <item name="colorAccent">@color/darker_blue</item>
         <item name="buttonStyle">@style/Button</item>
         <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Switch" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <item name="colorAccent">@color/white</item>
     </style>
 
     <style name="Button" parent="android:Widget.Material.Button.Borderless">

@@ -29,6 +29,7 @@ class RealRepository : Repository {
             .newBuilder()
             .addPathSegment("Food/FindFood")
             .addQueryParameter("searchQuery", query)
+            .addQueryParameter("page", "1")
             .build()
         val request = Request.Builder()
             .url(url)
@@ -40,10 +41,12 @@ class RealRepository : Repository {
 
         return withContext(Dispatchers.IO) {
             JSONArray(response.body!!.string()).toList().take(PRODUCT_LIMIT).map { jo ->
+                val foodDes = jo.getJSONObject("foodDes")
                 Product(
-                    id = jo.getLong("ndbNo"),
-                    name = jo.getString("longDesc"),
-                    nutrients = jo.getJSONArray("nutrients").toList().reversed() // reverse to get the first if it has duplicates
+                    id = foodDes.getLong("ndbNo"),
+                    name = foodDes.getString("longDesc"),
+                    nutrients = jo.getJSONArray("nutrients").toList()
+                        .reversed() // reverse to get the first if it has duplicates
                         .associate { it.getString("nutrientName") to it.getDouble("nutrientValue") }
                 )
             }

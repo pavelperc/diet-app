@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.dietapp.R
@@ -29,7 +30,7 @@ class SearchActivity : AppCompatActivity() {
         DietListAdapter()
     }
 
-    val searchViewModel by viewModels<SearchViewModel>()
+    val searchViewModel by viewModels<SearchViewModel> { ViewModelProvider.AndroidViewModelFactory.getInstance(application) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
