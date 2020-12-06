@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_dish_viewer.*
 class DishViewerActivity : AppCompatActivity() {
 
     val dish by lazy { intent.getSerializableExtra("dish") as Dish }
-    val productListAdapter by lazy { ProductListAdapter(showWeight = true) }
+    val productListAdapter by lazy { ProductListAdapter(this, showWeight = true) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

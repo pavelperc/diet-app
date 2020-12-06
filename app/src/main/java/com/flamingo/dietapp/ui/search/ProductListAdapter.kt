@@ -1,5 +1,7 @@
 package com.flamingo.dietapp.ui.search
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,12 +9,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Ingredient
+import com.flamingo.dietapp.ui.ProductViewerActivity
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
 import com.flamingo.dietapp.utils.NutritientFormatter.formatFat
 import com.flamingo.dietapp.utils.NutritientFormatter.formatProtein
 
-class ProductListAdapter(val showWeight: Boolean) :
+class ProductListAdapter(val context: Context, val showWeight: Boolean) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     var ingredients: List<Ingredient> = emptyList()
@@ -48,6 +51,11 @@ class ProductListAdapter(val showWeight: Boolean) :
         viewHolder.tvProteins.text = ingredient.protein.formatProtein()
         viewHolder.tvFats.text = ingredient.fat.formatFat()
         viewHolder.tvCarb.text = ingredient.carb.formatCarb()
+        viewHolder.root.setOnClickListener {
+            context.startActivity(Intent(context, ProductViewerActivity::class.java).apply {
+                putExtra("product", ingredient.product)
+            })
+        }
     }
 
     override fun getItemCount() = ingredients.size

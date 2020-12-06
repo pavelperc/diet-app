@@ -48,6 +48,7 @@ class RealRepository : Repository {
                     nutrients = jo.getJSONArray("nutrients").toList()
                         .reversed() // reverse to get the first if it has duplicates
                         .associate { it.getString("nutrientName") to it.getDouble("nutrientValue") }
+                        .filterKeys { !(it.getOrNull(0)?.isDigit() ?: true) } // remove strange digits
                 )
             }
         }

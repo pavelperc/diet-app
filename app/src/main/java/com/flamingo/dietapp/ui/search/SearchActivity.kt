@@ -19,7 +19,7 @@ import kotlinx.coroutines.FlowPreview
 class SearchActivity : AppCompatActivity() {
 
     private val productListAdapter by lazy {
-        ProductListAdapter(showWeight = false)
+        ProductListAdapter(this, showWeight = false)
     }
 
     private val dishListAdapter by lazy {
