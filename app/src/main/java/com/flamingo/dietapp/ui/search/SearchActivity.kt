@@ -27,7 +27,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private val dietListAdapter by lazy {
-        DietListAdapter()
+        DietListAdapter(this)
     }
 
     val searchViewModel by viewModels<SearchViewModel> { ViewModelProvider.AndroidViewModelFactory.getInstance(application) }

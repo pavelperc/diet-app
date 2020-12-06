@@ -59,7 +59,7 @@ class DishListAdapter(val context: Context) :
         viewHolder.tvCarbs.text = dish.carb.formatCarb()
 
         Glide.with(context)
-            .load(Uri.parse(dish.imageUrl))
+            .load(dish.imageUrl)
             .into(viewHolder.ivImage)
     }
 

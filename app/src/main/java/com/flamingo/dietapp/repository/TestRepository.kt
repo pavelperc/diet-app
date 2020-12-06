@@ -27,7 +27,7 @@ class TestRepository : Repository {
     )
 
     private val randomDishes = List(15) { i -> randomDish(i) }
-    private val randomDiets = List(4) { i -> randomDiet(i) }
+    private val randomDiets = List(5) { i -> randomDiet(i) }
 
     override suspend fun allDiets(): List<Diet> {
         delay(300)
@@ -39,24 +39,28 @@ class TestRepository : Repository {
         return randomDishes
     }
 
-    private fun randomDiet(id: Int) = Diet(
-        id.toLong(),
-        "Diet$id",
-        List(Random.nextInt(1, 5)) { i ->
-            DietDay(
-                "Day${i + 1}",
-                randomDishes.shuffled().take(Random.nextInt(2, 4))
-            )
-        }
-    )
+    private fun randomDiet(id: Int): Diet {
+        val dishes = randomDishes.shuffled().take(Random.nextInt(1, 8))
+        return Diet(
+            id.toLong(),
+            "Diet$id",
+            dishes.chunked(Random.nextInt(2, 4)).mapIndexed { i, todayDishes ->
+                DietDay(
+                    "Day${i + 1}",
+                    todayDishes
+                )
+            }
+        )
+    }
 
     private fun randomDish(id: Int) = Dish(
         id.toLong(),
         "Dish$id",
         assetImage(id),
-        productsBase.shuffled().take(Random.nextInt(1, 5))
+        productsBase.shuffled().take(Random.nextInt(1, 6))
             .map { DishIngredient(Random.nextInt(100, 1000), it) }
     )
+
     private fun assetImage(id: Int) = "file:///android_asset/food${(id % 6) + 1}.jpg"
 
 }
