@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Dish
-import com.flamingo.dietapp.ui.search.DishListAdapter
 import com.flamingo.dietapp.ui.search.ProductListAdapter
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
@@ -18,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_dish_viewer.*
 class DishViewerActivity : AppCompatActivity() {
 
     val dish by lazy { intent.getSerializableExtra("dish") as Dish }
-    val productListAdapter by lazy { ProductListAdapter() }
+    val productListAdapter by lazy { ProductListAdapter(showWeight = true) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +39,6 @@ class DishViewerActivity : AppCompatActivity() {
 
         rvProducts.layoutManager = LinearLayoutManager(this)
         rvProducts.adapter = productListAdapter
-        productListAdapter.products = dish.ingredients.map {
-            it.product.copy(name = it.product.name + " (${it.weight}g)")
-        }
+        productListAdapter.ingredients = dish.ingredients
     }
 }

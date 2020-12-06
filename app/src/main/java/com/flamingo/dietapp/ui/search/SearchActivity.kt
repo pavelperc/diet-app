@@ -19,7 +19,7 @@ import kotlinx.coroutines.FlowPreview
 class SearchActivity : AppCompatActivity() {
 
     private val productListAdapter by lazy {
-        ProductListAdapter()
+        ProductListAdapter(showWeight = false)
     }
 
     private val dishListAdapter by lazy {
@@ -75,7 +75,7 @@ class SearchActivity : AppCompatActivity() {
 
         when (result) {
             is ProductsResult -> {
-                productListAdapter.products = result.products
+                productListAdapter.ingredients = result.products
                 rvItems.adapter = productListAdapter
             }
             is DishesResult -> {

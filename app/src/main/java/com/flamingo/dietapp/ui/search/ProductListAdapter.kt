@@ -6,17 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.flamingo.dietapp.R
-import com.flamingo.dietapp.domain.Product
+import com.flamingo.dietapp.domain.Ingredient
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
 import com.flamingo.dietapp.utils.NutritientFormatter.formatFat
 import com.flamingo.dietapp.utils.NutritientFormatter.formatProtein
 
-class ProductListAdapter() :
+class ProductListAdapter(val showWeight: Boolean) :
     RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
-
-    var products: List<Product> = emptyList()
+    var ingredients: List<Ingredient> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -38,14 +37,19 @@ class ProductListAdapter() :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val product = products[position]
-        viewHolder.tvName.text = product.name
-        viewHolder.tvCalories.text = product.calories.formatCalories()
-        viewHolder.tvProteins.text = product.protein.formatProtein()
-        viewHolder.tvFats.text = product.fat.formatFat()
-        viewHolder.tvCarb.text = product.carb.formatCarb()
+        val ingredient = ingredients[position]
+        val name = if (showWeight) {
+            ingredient.name + " (${ingredient.weight}g)"
+        } else {
+            ingredient.name
+        }
+        viewHolder.tvName.text = name
+        viewHolder.tvCalories.text = ingredient.calories.formatCalories()
+        viewHolder.tvProteins.text = ingredient.protein.formatProtein()
+        viewHolder.tvFats.text = ingredient.fat.formatFat()
+        viewHolder.tvCarb.text = ingredient.carb.formatCarb()
     }
 
-    override fun getItemCount() = products.size
+    override fun getItemCount() = ingredients.size
 
 }

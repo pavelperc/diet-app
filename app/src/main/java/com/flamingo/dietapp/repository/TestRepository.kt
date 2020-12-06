@@ -55,7 +55,7 @@ class TestRepository : Repository {
         "Dish$id",
         assetImage(id),
         productsBase.shuffled().take(Random.nextInt(1, 5))
-            .map { Ingredient(Random.nextInt(100, 1000), it) }
+            .map { DishIngredient(Random.nextInt(100, 1000), it) }
     )
     private fun assetImage(id: Int) = "file:///android_asset/food${(id % 6) + 1}.jpg"
 
