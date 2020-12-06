@@ -10,39 +10,112 @@
     <com.flamingo.dietapp.ui.views.ScalableImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/bottom_navigation_height_reversed"
         android:src="@drawable/bg_explore"
-        app:scaleType="fitBottom" />
+        app:scaleType="centerCrop" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:gravity="center"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Explore"
+                    android:textColor="@color/white"
+                    android:textSize="48sp" />
+
+                <Button
+
+                    android:id="@+id/btnSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_search"
+                    android:drawablePadding="16dp"
+                    android:text="Search" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="16dp"
+                android:background="#33000000" />
 
             <TextView
-                android:textColor="@color/white"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Explore"
-                android:textSize="48sp" />
-
-            <Button
-
-                android:drawablePadding="16dp"
-                android:id="@+id/btnSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/ic_search"
-                android:text="Search" />
+                android:layout_marginStart="32dp"
+                android:text="Diets"
+                android:textColor="@color/white"
+                android:textSize="36sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="240dp"
+                android:text="Dishes"
+                android:textColor="@color/white"
+                android:textSize="36sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDishes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_dish" />
+                <LinearLayout
+                    android:layout_margin="16dp"
+                    android:id="@+id/llDishesError"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textAlignment="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Something went wrong"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                    <TextView
+                        android:textAlignment="center"
+                        android:id="@+id/tvDishesError"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Exception message"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/pbLoadingDishes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+
+            </FrameLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 </FrameLayout>

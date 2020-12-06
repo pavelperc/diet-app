@@ -48,9 +48,9 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
 
     val preferences by lazy { Preferences(application.applicationContext) }
 
-        val repository: Repository by lazy {
-            if (preferences.useTestRepository) TestRepository() else RealRepository()
-        }
+    val repository: Repository by lazy {
+        if (preferences.useTestRepository) TestRepository() else RealRepository()
+    }
 
 
     enum class Filter { Products, Dishes, Diets }
