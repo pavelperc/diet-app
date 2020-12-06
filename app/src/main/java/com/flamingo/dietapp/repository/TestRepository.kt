@@ -45,7 +45,7 @@ object TestRepository : Repository {
     }
 
     private fun randomDiet(id: Int): Diet {
-        val dishes = randomDishes.shuffled().take(Random.nextInt(1, 8))
+        val dishes = randomDishes.shuffled().take(Random.nextInt(2, 7))
         return Diet(
             id.toLong(),
             "Diet$id",

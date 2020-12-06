@@ -2,14 +2,18 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginStart="32dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginBottom="16dp"
     android:orientation="vertical"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
     <LinearLayout
+        android:minWidth="180dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -21,7 +25,7 @@
             android:layout_gravity="center"
             android:background="@color/darker_blue"
             android:padding="8dp"
-            android:text="Optimal fats and carbons"
+            android:text="Fats"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="23sp" />
@@ -29,9 +33,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <LinearLayout
+                tools:visibility="gone"
+                android:layout_margin="8dp"
                 android:id="@+id/llDish1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,6 +68,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_margin="8dp"
                 android:id="@+id/llDish2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,6 +99,8 @@
             </LinearLayout>
 
             <LinearLayout
+                tools:visibility="gone"
+                android:layout_margin="8dp"
                 android:id="@+id/llDish3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

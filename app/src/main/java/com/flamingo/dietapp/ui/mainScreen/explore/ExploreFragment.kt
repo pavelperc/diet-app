@@ -24,8 +24,8 @@ class ExploreFragment : Fragment() {
         ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)
     }
 
-    private val dishesAdapter by lazy { DishListAdapter(requireContext()) }
-    private val dietsAdapter by lazy { DietListAdapter(requireContext()) }
+    private val dishesAdapter by lazy { DishListAdapter(requireContext(), false) }
+    private val dietsAdapter by lazy { DietListAdapter(requireContext(), false) }
 
     override fun onCreateView(
         inflater: LayoutInflater,

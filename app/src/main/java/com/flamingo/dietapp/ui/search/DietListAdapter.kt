@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
@@ -12,7 +13,7 @@ import com.flamingo.dietapp.domain.Diet
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import kotlinx.android.synthetic.main.item_diet.view.*
 
-class DietListAdapter(val context: Context) :
+class DietListAdapter(val context: Context, val matchParent: Boolean) :
     RecyclerView.Adapter<DietListAdapter.ViewHolder>() {
 
 
@@ -42,6 +43,10 @@ class DietListAdapter(val context: Context) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.root.updateLayoutParams<ViewGroup.LayoutParams> {
+            width = if (matchParent) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+        }
+
         val diet = diets[position]
         with(viewHolder) {
             tvName.text = diet.name

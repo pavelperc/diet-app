@@ -6,6 +6,8 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
@@ -18,7 +20,7 @@ import com.flamingo.dietapp.utils.NutritientFormatter.formatProtein
 import com.flamingo.dietapp.utils.NutritientFormatter.formatWeight
 import kotlinx.android.synthetic.main.item_dish.view.*
 
-class DishListAdapter(val context: Context) :
+class DishListAdapter(val context: Context, val matchParent: Boolean) :
     RecyclerView.Adapter<DishListAdapter.ViewHolder>() {
 
 
@@ -45,6 +47,10 @@ class DishListAdapter(val context: Context) :
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        viewHolder.root.updateLayoutParams<ViewGroup.LayoutParams> {
+            width = if (matchParent) ViewGroup.LayoutParams.MATCH_PARENT else ViewGroup.LayoutParams.WRAP_CONTENT
+        }
+
         val dish = dishes[position]
         viewHolder.root.setOnClickListener {
             context.startActivity(Intent(context, DishViewerActivity::class.java).apply {

@@ -23,11 +23,11 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private val dishListAdapter by lazy {
-        DishListAdapter(this)
+        DishListAdapter(this, true)
     }
 
     private val dietListAdapter by lazy {
-        DietListAdapter(this)
+        DietListAdapter(this, true)
     }
 
     val searchViewModel by viewModels<SearchViewModel> { ViewModelProvider.AndroidViewModelFactory.getInstance(application) }
