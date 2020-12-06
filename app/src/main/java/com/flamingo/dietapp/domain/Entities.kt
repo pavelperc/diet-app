@@ -1,10 +1,12 @@
 package com.flamingo.dietapp.domain
 
+import java.io.Serializable
+
 data class Product(
     val id: Long,
     val name: String,
     val nutrients: Map<String, Double>
-) {
+) : Serializable {
     companion object {
         fun basic(
             id: Long,
@@ -34,7 +36,7 @@ data class Dish(
     val name: String,
     val imageUrl: String,
     val ingredients: List<Ingredient>
-) {
+) : Serializable {
     val weight = ingredients.sumBy { it.weight }
     val calories = ingredients.sumByDouble { it.weight * it.product.calories } / 100
     val fat = ingredients.sumByDouble { it.weight * it.product.fat } / 100
@@ -45,7 +47,7 @@ data class Dish(
 data class Ingredient(
     val weight: Int,
     val product: Product
-)
+) : Serializable
 
 data class DietDay(
     val description: String,

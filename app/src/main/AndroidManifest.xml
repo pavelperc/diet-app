@@ -3,6 +3,7 @@
     package="com.flamingo.dietapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DietApp">
-        <activity android:name="com.flamingo.dietapp.ui.search.SearchActivity" />
-        <activity android:name="com.flamingo.dietapp.ui.mainScreen.MainActivity" />
-        <activity android:name="com.flamingo.dietapp.ui.login.LoginActivity">
+        <activity android:name=".ui.dishViewer.DishViewerActivity"></activity>
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.mainScreen.MainActivity" />
+        <activity android:name=".ui.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

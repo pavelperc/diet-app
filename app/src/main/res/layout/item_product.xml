@@ -5,11 +5,18 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="#33000000" />
+
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice Apple Juice"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="23sp" />
 
@@ -18,57 +25,38 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TableRow>
+        <TableRow android:padding="4dp">
 
             <TextView
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Calories: " />
-
-            <TextView
+                android:textSize="16sp"
                 android:id="@+id/tvCalories"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:text="1,23" />
-
+                android:layout_weight="3"
+                android:text="Calories: 1,23" />
 
             <TextView
+                android:textSize="16sp"
+                android:id="@+id/tvFat"
+                android:layout_width="0dp"
                 android:layout_weight="2"
-                android:layout_width="0dp"
-                android:text="Proteins: " />
-
-            <TextView
-                android:id="@+id/tvProtein"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:text="1,23" />
+                android:text="Fat: 1,23" />
         </TableRow>
 
-        <TableRow>
+        <TableRow android:padding="4dp">
 
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/tvProtein"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:text="Protein: 1,23" />
 
-                <TextView
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:text="Fat: " />
-
-                <TextView
-                    android:id="@+id/tvFat"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:text="1,23" />
-
-                <TextView
-                    android:layout_weight="2"
-                    android:layout_width="0dp"
-                    android:text="Carbs: " />
-
-                <TextView
-                    android:id="@+id/tvCarbs"
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:text="1,23" />
+            <TextView
+                android:textSize="16sp"
+                android:id="@+id/tvCarbs"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:text="Carbs: 1,23" />
         </TableRow>
     </TableLayout>
 

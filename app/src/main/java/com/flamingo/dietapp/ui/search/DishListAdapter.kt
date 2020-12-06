@@ -1,6 +1,7 @@
 package com.flamingo.dietapp.ui.search
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Dish
+import com.flamingo.dietapp.ui.dishViewer.DishViewerActivity
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
 import com.flamingo.dietapp.utils.NutritientFormatter.formatFat
 import com.flamingo.dietapp.utils.NutritientFormatter.formatProtein
+import com.flamingo.dietapp.utils.NutritientFormatter.formatWeight
 import kotlinx.android.synthetic.main.item_dish.view.*
 
 class DishListAdapter(val context: Context) :
@@ -43,12 +46,17 @@ class DishListAdapter(val context: Context) :
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val dish = dishes[position]
+        viewHolder.root.setOnClickListener {
+            context.startActivity(Intent(context, DishViewerActivity::class.java).apply {
+                putExtra("dish", dish)
+            })
+        }
         viewHolder.tvName.text = dish.name
-        viewHolder.tvWeight.text = "${dish.weight}g"
-        viewHolder.tvCalories.text = "Calories: " + dish.calories.formatCalories()
-        viewHolder.tvFat.text = "Fat: " + dish.fat.formatFat()
-        viewHolder.tvProtein.text = "Protein: " + dish.protein.formatProtein()
-        viewHolder.tvCarbs.text = "Carbs: " + dish.carb.formatCarb()
+        viewHolder.tvWeight.text = dish.weight.formatWeight()
+        viewHolder.tvCalories.text = dish.calories.formatCalories()
+        viewHolder.tvFat.text = dish.fat.formatFat()
+        viewHolder.tvProtein.text = dish.protein.formatProtein()
+        viewHolder.tvCarbs.text = dish.carb.formatCarb()
 
         Glide.with(context)
             .load(Uri.parse(dish.imageUrl))
