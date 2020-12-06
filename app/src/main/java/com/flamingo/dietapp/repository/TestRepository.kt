@@ -4,7 +4,7 @@ import com.flamingo.dietapp.domain.*
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-class TestRepository : Repository {
+object TestRepository : Repository {
 
     override suspend fun findProducts(query: String): List<Product> {
         delay(300)
@@ -26,8 +26,13 @@ class TestRepository : Repository {
         Product.basic(11, "Pork", 1.0, 2.0, 3.0, 2.0),
     )
 
-    private val randomDishes = List(15) { i -> randomDish(i) }
-    private val randomDiets = List(5) { i -> randomDiet(i) }
+    private var randomDishes = List(15) { i -> randomDish(i) }
+    private var randomDiets = List(5) { i -> randomDiet(i) }
+
+    fun regenerate() {
+        randomDishes = List(15) { i -> randomDish(i) }
+        randomDiets = List(5) { i -> randomDiet(i) }
+    }
 
     override suspend fun allDiets(): List<Diet> {
         delay(300)

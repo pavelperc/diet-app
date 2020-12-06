@@ -61,12 +61,56 @@
                 android:text="Diets"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="212dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvDiets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/item_diet" />
+
+                <LinearLayout
+                    android:id="@+id/llDietsError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Something went wrong"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvDietsError"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Exception message"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/pbLoadingDiets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+            </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="240dp"
                 android:text="Dishes"
                 android:textColor="@color/white"
                 android:textSize="36sp" />
@@ -81,29 +125,31 @@
                     android:layout_height="wrap_content"
                     tools:itemCount="1"
                     tools:listitem="@layout/item_dish" />
+
                 <LinearLayout
-                    android:layout_margin="16dp"
                     android:id="@+id/llDishesError"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:textAlignment="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Something went wrong"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
+
                     <TextView
-                        android:textAlignment="center"
                         android:id="@+id/tvDishesError"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Exception message"
+                        android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -113,8 +159,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" />
-
-
             </FrameLayout>
         </LinearLayout>
     </ScrollView>

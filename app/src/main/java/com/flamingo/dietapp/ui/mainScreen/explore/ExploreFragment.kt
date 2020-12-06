@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.flamingo.dietapp.R
+import com.flamingo.dietapp.ui.search.DietListAdapter
 import com.flamingo.dietapp.ui.search.DishListAdapter
 import com.flamingo.dietapp.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.fragment_explore.*
@@ -24,6 +25,7 @@ class ExploreFragment : Fragment() {
     }
 
     private val dishesAdapter by lazy { DishListAdapter(requireContext()) }
+    private val dietsAdapter by lazy { DietListAdapter(requireContext()) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +41,7 @@ class ExploreFragment : Fragment() {
             startActivity(Intent(requireContext(), SearchActivity::class.java))
         }
         setupDishes()
-        exploreViewModel.loadDishes()
+        setupDiets()
     }
 
 
@@ -66,5 +68,30 @@ class ExploreFragment : Fragment() {
         }
 
         exploreViewModel.loadDishes()
+    }
+
+    private fun setupDiets() {
+        rvDiets.adapter = dietsAdapter
+        rvDiets.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+        val snapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(rvDiets)
+
+        exploreViewModel.dietsViewState.observe(requireActivity()) { viewState ->
+            pbLoadingDiets.isVisible = viewState is ExploreViewModel.DietsViewState.Loading
+            rvDiets.isVisible = viewState is ExploreViewModel.DietsViewState.Loaded
+            tvDietsError.isVisible = viewState is ExploreViewModel.DietsViewState.Error
+            llDietsError.isVisible = viewState is ExploreViewModel.DietsViewState.Error
+
+            when (viewState) {
+                is ExploreViewModel.DietsViewState.Loaded -> {
+                    dietsAdapter.diets = viewState.diets
+                }
+                is ExploreViewModel.DietsViewState.Error -> {
+                    tvDietsError.text = viewState.e.message
+                }
+            }
+        }
+
+        exploreViewModel.loadDiets()
     }
 }

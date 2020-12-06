@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.flamingo.dietapp.BuildConfig
 import com.flamingo.dietapp.Preferences
 import com.flamingo.dietapp.R
+import com.flamingo.dietapp.repository.TestRepository
 import kotlinx.android.synthetic.main.fragment_personal.*
 
 class PersonalFragment : Fragment() {
@@ -32,6 +33,7 @@ class PersonalFragment : Fragment() {
         swchUseTestData.isChecked = preferences.useTestRepository
         swchUseTestData.setOnCheckedChangeListener { buttonView, isChecked ->
             preferences.useTestRepository = isChecked
+            TestRepository.regenerate()
         }
     }
 }
