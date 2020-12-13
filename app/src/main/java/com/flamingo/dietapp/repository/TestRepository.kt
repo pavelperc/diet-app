@@ -62,7 +62,7 @@ object TestRepository : Repository {
         id.toLong(),
         "Dish$id",
         assetImage(id),
-        productsBase.shuffled().take(Random.nextInt(1, 6))
+        productsBase.shuffled().take(Random.nextInt(6, 10))
             .map { DishIngredient(Random.nextInt(100, 1000), it) }
     )
 
