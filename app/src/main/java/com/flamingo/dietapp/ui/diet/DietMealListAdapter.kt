@@ -29,6 +29,7 @@ class DietMealListAdapter(
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         val tvMeal = root.tvMeal
+        val divider = root.divider
         val tvName = root.tvName
         val tvCal = root.tvCal
         val chbFinished = root.chbFinished
@@ -44,6 +45,7 @@ class DietMealListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val (mealName, dish) = dishes[position]
         holder.tvMeal.isVisible = mealName != null
+        holder.divider.isVisible = position < dishes.size - 1
         holder.tvMeal.text = mealName ?: ""
         holder.tvName.text = dish.name
         holder.tvCal.text = dish.calories.formatCalories(false)
