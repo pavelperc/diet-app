@@ -23,13 +23,6 @@
             android:textColor="@color/black"
             android:textSize="23sp" />
 
-        <TextView
-            android:id="@+id/tvWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="300g" />
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

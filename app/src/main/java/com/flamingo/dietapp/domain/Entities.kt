@@ -59,15 +59,15 @@ data class Product(
 data class Dish(
     val id: Long,
     val name: String,
+    val description: String?,
+    val ingredients: String?,
+    val recipe: String?,
     val imageUrl: String,
-    val ingredients: List<DishIngredient>
-) : Serializable {
-    val weight = ingredients.sumBy { it.weight }
-    val calories = ingredients.sumByDouble { it.calories }
-    val fat = ingredients.sumByDouble { it.fat }
-    val protein = ingredients.sumByDouble { it.protein }
-    val carb = ingredients.sumByDouble { it.carb }
-}
+    val calories: Double,
+    val fat: Double,
+    val protein: Double,
+    val carb: Double,
+) : Serializable
 
 // breakfast/snack/dinner...
 data class DietMeal(

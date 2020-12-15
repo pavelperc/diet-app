@@ -30,7 +30,6 @@ class DishListAdapter(val context: Context, val matchParent: Boolean) :
 
     class ViewHolder(val root: View) : RecyclerView.ViewHolder(root) {
         val tvName = root.tvName
-        val tvWeight = root.tvWeight
         val ivImage = root.ivImage
         val tvCalories = root.tvCalories
         val tvFat = root.tvFat
@@ -56,7 +55,6 @@ class DishListAdapter(val context: Context, val matchParent: Boolean) :
             })
         }
         viewHolder.tvName.text = dish.name
-        viewHolder.tvWeight.text = dish.weight.formatWeight()
         viewHolder.tvCalories.text = dish.calories.formatCalories()
         viewHolder.tvFat.text = dish.fat.formatFat()
         viewHolder.tvProtein.text = dish.protein.formatProtein()

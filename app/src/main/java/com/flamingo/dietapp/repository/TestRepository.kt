@@ -25,27 +25,42 @@ object TestRepository : Repository {
         Product.basic(10, "Chicken", 1.0, 4.0, 3.0, 1.0),
         Product.basic(11, "Pork", 1.0, 2.0, 3.0, 2.0),
     )
-    private val egg = DishIngredient(200, productsBase[4])
-    private val milk = DishIngredient(300, productsBase[0])
-    private val potato = DishIngredient(400, productsBase[2])
 
     private val dish1 = Dish(
         1,
         "Dish 1",
+        "Description",
+        "Ingredients",
+        "recipe",
         assetImage("food1"),
-        listOf(egg)
+        2.0,
+        3.0,
+        4.0,
+        5.0
     )
     private val dish2 = Dish(
         1,
         "Dish 2",
+        "Description",
+        "Ingredients",
+        "recipe",
         assetImage("food2"),
-        listOf(milk)
+        3.0,
+        2.0,
+        5.0,
+        4.0
     )
     private val dish3 = Dish(
         1,
         "Dish 3",
+        "Description",
+        "Ingredients",
+        "recipe",
         assetImage("food3"),
-        listOf(potato)
+        1.0,
+        1.0,
+        3.0,
+        2.0
     )
     private val testDishes = listOf(dish1, dish2, dish3)
 

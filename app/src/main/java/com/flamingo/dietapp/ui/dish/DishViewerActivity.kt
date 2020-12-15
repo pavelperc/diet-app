@@ -2,6 +2,7 @@ package com.flamingo.dietapp.ui.dish
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
@@ -17,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_dish_viewer.*
 class DishViewerActivity : AppCompatActivity() {
 
     val dish by lazy { intent.getSerializableExtra("dish") as Dish }
-    val productListAdapter by lazy { ProductListAdapter(this, showWeight = true) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,6 @@ class DishViewerActivity : AppCompatActivity() {
             onBackPressed()
         }
         tvName.text = dish.name
-        tvWeight.text = dish.weight.formatWeight()
         tvCalories.text = dish.calories.formatCalories()
         tvFat.text = dish.fat.formatFat()
         tvProtein.text = dish.protein.formatProtein()
@@ -37,8 +36,15 @@ class DishViewerActivity : AppCompatActivity() {
             .load(dish.imageUrl)
             .into(ivImage)
 
-        rvProducts.layoutManager = LinearLayoutManager(this)
-        rvProducts.adapter = productListAdapter
-        productListAdapter.ingredients = dish.ingredients
+        tvDescription.text = dish.description
+        tvRecipe.text = dish.recipe
+        tvIngredients.text = dish.ingredients
+
+        tvDescription.isVisible = dish.description != null
+        tvDescriptionHeader.isVisible = dish.description != null
+        tvRecipe.isVisible = dish.recipe != null
+        tvRecipeHeader.isVisible = dish.recipe != null
+        tvIngredients.isVisible = dish.ingredients != null
+        tvIngredientsHeader.isVisible = dish.ingredients != null
     }
 }
