@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:minHeight="54dp"
             app:contentScrim="@color/light_blue"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Plant-Based Diet">
 
             <ImageView
@@ -99,6 +99,7 @@
                         android:textSize="22sp" />
 
                     <TextView
+                        android:textSize="18sp"
                         android:id="@+id/tvDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,6 +129,7 @@ Fruits (such as avocado, strawberries, blueberries, watermelon, apples, grapes, 
     </androidx.core.widget.NestedScrollView>
 
     <Button
+        android:id="@+id/btnFollow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"

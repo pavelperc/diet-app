@@ -10,8 +10,19 @@ import kotlinx.android.synthetic.main.activity_diet.*
 
 class DietActivity : AppCompatActivity() {
 
-    val diet by lazy { intent.getSerializableExtra("diet") as Diet }
+    private var isFollowing = false
+    set(value) {
+        field = value
+        adapter.withCheckBoxes = value
+        if (value) {
+            btnFollow.text = "Unfollow"
+        } else {
+            btnFollow.text = "Follow"
+        }
+    }
 
+    val diet by lazy { intent.getSerializableExtra("diet") as Diet }
+    val adapter by lazy { DietDayListAdapter(this, diet, isFollowing) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet)
@@ -23,7 +34,11 @@ class DietActivity : AppCompatActivity() {
             .load(diet.previewImage)
             .into(ivPreview)
 
-        rvDays.adapter = DietDayListAdapter(this, diet, withCheckBoxes = false)
+        rvDays.adapter = adapter
         rvDays.layoutManager = LinearLayoutManager(this)
+
+        btnFollow.setOnClickListener {
+            isFollowing = !isFollowing
+        }
     }
 }

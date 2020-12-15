@@ -59,6 +59,16 @@ class DietMealListAdapter(
                 putExtra("dish", dish)
             })
         }
+        holder.chbFinished.setOnCheckedChangeListener { buttonView, isChecked ->
+            holder.tvName.apply {
+                if (isChecked) {
+                    setTextColor(context.getColor(R.color.darker_blue))
+                } else {
+                    setTextColor(context.getColor(R.color.black))
+                }
+            }
+        }
+        holder.chbFinished.isChecked = false
     }
 
     override fun getItemCount() = dishes.size

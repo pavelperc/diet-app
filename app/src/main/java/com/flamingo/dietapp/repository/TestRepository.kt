@@ -7,7 +7,7 @@ import kotlin.random.Random
 object TestRepository : Repository {
 
     override suspend fun findProducts(query: String): List<Product> {
-        delay(300)
+        delay(Random.nextLong(300, 500))
         return productsBase.filter { it.name.contains(query, true) }
     }
 
@@ -130,12 +130,12 @@ Fruits (such as avocado, strawberries, blueberries, watermelon, apples, grapes, 
     }
 
     override suspend fun allDiets(): List<Diet> {
-        delay(300)
+        delay(Random.nextLong(300, 500))
         return testDiets
     }
 
     override suspend fun allDishes(): List<Dish> {
-        delay(300)
+        delay(Random.nextLong(300, 500))
         return testDishes
     }
 

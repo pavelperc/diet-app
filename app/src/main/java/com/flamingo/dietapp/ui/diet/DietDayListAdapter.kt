@@ -13,8 +13,14 @@ import kotlinx.android.synthetic.main.item_diet_day.view.*
 class DietDayListAdapter(
     val context: Context,
     val diet: Diet,
-    val withCheckBoxes: Boolean
+    withCheckBoxes: Boolean = false
 ) : RecyclerView.Adapter<DietDayListAdapter.ViewHolder>() {
+
+    var withCheckBoxes = withCheckBoxes
+    set(value) {
+        field = value
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(root: View) : RecyclerView.ViewHolder(root) {
         val tvName = root.tvName
