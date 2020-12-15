@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DietApp">
-        <activity android:name=".ui.ProductViewerActivity"></activity>
-        <activity android:name=".ui.dishViewer.DishViewerActivity" />
+        <activity android:name=".ui.product.ProductViewerActivity" />
+        <activity android:name=".ui.diet.DietActivity" />
+        <activity android:name=".ui.dish.DishViewerActivity" />
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.mainScreen.MainActivity" />
         <activity android:name=".ui.login.LoginActivity">

@@ -69,13 +69,21 @@ data class Dish(
     val carb = ingredients.sumByDouble { it.carb }
 }
 
-data class DietDay(
-    val description: String,
+// breakfast/snack/dinner...
+data class DietMeal(
+    val name: String,
     val dishes: List<Dish>
-)
+): Serializable
+
+data class DietDay(
+    val name: String,
+    val meals: List<DietMeal>
+): Serializable
 
 data class Diet(
     val id: Long,
     val name: String,
+    val description: String,
+    val previewImage: String,
     val days: List<DietDay>
-)
+): Serializable

@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Ingredient
-import com.flamingo.dietapp.ui.ProductViewerActivity
+import com.flamingo.dietapp.ui.product.ProductViewerActivity
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
 import com.flamingo.dietapp.utils.NutritientFormatter.formatFat

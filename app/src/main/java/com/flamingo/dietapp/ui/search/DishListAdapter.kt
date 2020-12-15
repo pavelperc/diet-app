@@ -2,17 +2,15 @@ package com.flamingo.dietapp.ui.search
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.core.view.updateLayoutParams
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Dish
-import com.flamingo.dietapp.ui.dishViewer.DishViewerActivity
+import com.flamingo.dietapp.ui.dish.DishViewerActivity
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCarb
 import com.flamingo.dietapp.utils.NutritientFormatter.formatFat

@@ -1,4 +1,4 @@
-package com.flamingo.dietapp.ui
+package com.flamingo.dietapp.ui.product
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

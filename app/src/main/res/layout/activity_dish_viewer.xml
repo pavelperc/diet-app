@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.dishViewer.DishViewerActivity">
+    tools:context=".ui.dish.DishViewerActivity">
 
     <com.flamingo.dietapp.ui.views.ScalableImageView
         android:layout_width="match_parent"

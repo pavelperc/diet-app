@@ -1,6 +1,7 @@
 package com.flamingo.dietapp.ui.search
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.flamingo.dietapp.R
 import com.flamingo.dietapp.domain.Diet
+import com.flamingo.dietapp.ui.diet.DietActivity
 import com.flamingo.dietapp.utils.NutritientFormatter.formatCalories
 import kotlinx.android.synthetic.main.item_diet.view.*
 
@@ -50,7 +52,7 @@ class DietListAdapter(val context: Context, val matchParent: Boolean) :
         val diet = diets[position]
         with(viewHolder) {
             tvName.text = diet.name
-            val dishes = diet.days.flatMap { it.dishes }
+            val dishes = diet.days.flatMap { it.meals.flatMap { it.dishes } }
             val dish1 = dishes.getOrNull(0)
             val dish2 = dishes.getOrNull(1)
             val dish3 = dishes.getOrNull(2)
@@ -76,6 +78,11 @@ class DietListAdapter(val context: Context, val matchParent: Boolean) :
                 Glide.with(context)
                     .load(dish3.imageUrl)
                     .into(ivDish3)
+            }
+            root.setOnClickListener {
+                context.startActivity(Intent(context, DietActivity::class.java).apply {
+                    putExtra("diet", diet)
+                })
             }
         }
     }

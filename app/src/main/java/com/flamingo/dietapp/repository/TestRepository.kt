@@ -25,47 +25,120 @@ object TestRepository : Repository {
         Product.basic(10, "Chicken", 1.0, 4.0, 3.0, 1.0),
         Product.basic(11, "Pork", 1.0, 2.0, 3.0, 2.0),
     )
+    private val egg = DishIngredient(200, productsBase[4])
+    private val milk = DishIngredient(300, productsBase[0])
+    private val potato = DishIngredient(400, productsBase[2])
 
-    private var randomDishes = List(15) { i -> randomDish(i) }
-    private var randomDiets = List(5) { i -> randomDiet(i) }
+    private val dish1 = Dish(
+        1,
+        "Dish 1",
+        assetImage("food1"),
+        listOf(egg)
+    )
+    private val dish2 = Dish(
+        1,
+        "Dish 2",
+        assetImage("food2"),
+        listOf(milk)
+    )
+    private val dish3 = Dish(
+        1,
+        "Dish 3",
+        assetImage("food3"),
+        listOf(potato)
+    )
+    private val testDishes = listOf(dish1, dish2, dish3)
+
+    private val testDiets = listOf(
+        Diet(
+            1,
+            "Diet 1",
+            """The main idea is to make plant-based foods the central part of your meals. What to Eat and Drink
+Vegetables (including kale, spinach, Swiss chard, collard greens, sweet potatoes, asparagus, bell peppers, and broccoli)
+Fruits (such as avocado, strawberries, blueberries, watermelon, apples, grapes, bananas, grapefruit...""",
+            assetImage("diet1"),
+            listOf(
+                DietDay(
+                    "Day 1",
+                    listOf(
+                        DietMeal(
+                            "Breakfast",
+                            listOf(dish1)
+                        ),
+                        DietMeal(
+                            "Dinner",
+                            listOf(dish2, dish3)
+                        )
+                    )
+                ),
+                DietDay(
+                    "Day 2",
+                    listOf(
+                        DietMeal(
+                            "Breakfast",
+                            listOf(dish1, dish2)
+                        ),
+                        DietMeal(
+                            "Snack",
+                            listOf(dish3)
+                        )
+                    )
+                )
+            )
+        ),
+        Diet(
+            2,
+            "Diet 2",
+            """The main idea is to make plant-based foods the central part of your meals. What to Eat and Drink
+Vegetables (including kale, spinach, Swiss chard, collard greens, sweet potatoes, asparagus, bell peppers, and broccoli)
+Fruits (such as avocado, strawberries, blueberries, watermelon, apples, grapes, bananas, grapefruit...""",
+            assetImage("diet2"),
+            listOf(
+                DietDay(
+                    "Day 1",
+                    listOf(
+                        DietMeal(
+                            "Breakfast",
+                            listOf(dish1)
+                        ),
+                        DietMeal(
+                            "Dinner",
+                            listOf(dish2, dish3)
+                        )
+                    )
+                ),
+                DietDay(
+                    "Day 2",
+                    listOf(
+                        DietMeal(
+                            "Breakfast",
+                            listOf(dish1, dish2)
+                        ),
+                        DietMeal(
+                            "Snack",
+                            listOf(dish3)
+                        )
+                    )
+                )
+            )
+        )
+    )
 
     fun regenerate() {
-        randomDishes = List(15) { i -> randomDish(i) }
-        randomDiets = List(5) { i -> randomDiet(i) }
+//    randomDishes = List(15) { i -> randomDish(i) }
+//        randomDiets = List(5) { i -> randomDiet(i) }
     }
 
     override suspend fun allDiets(): List<Diet> {
         delay(300)
-        return randomDiets
+        return testDiets
     }
 
     override suspend fun allDishes(): List<Dish> {
         delay(300)
-        return randomDishes
+        return testDishes
     }
 
-    private fun randomDiet(id: Int): Diet {
-        val dishes = randomDishes.shuffled().take(Random.nextInt(2, 7))
-        return Diet(
-            id.toLong(),
-            "Diet$id",
-            dishes.chunked(Random.nextInt(2, 4)).mapIndexed { i, todayDishes ->
-                DietDay(
-                    "Day${i + 1}",
-                    todayDishes
-                )
-            }
-        )
-    }
-
-    private fun randomDish(id: Int) = Dish(
-        id.toLong(),
-        "Dish$id",
-        assetImage(id),
-        productsBase.shuffled().take(Random.nextInt(6, 10))
-            .map { DishIngredient(Random.nextInt(100, 1000), it) }
-    )
-
-    private fun assetImage(id: Int) = "file:///android_asset/food${(id % 6) + 1}.jpg"
+    private fun assetImage(name: String) = "file:///android_asset/$name.jpg"
 
 }
