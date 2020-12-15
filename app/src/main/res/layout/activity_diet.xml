@@ -8,16 +8,15 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:background="@color/transparent"
-        app:elevation="0dp">
+        android:background="@color/transparent">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            app:title="Plant-Based Diet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:minHeight="54dp"
-            app:contentScrim="@color/transparent"
-            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+            app:contentScrim="@color/light_blue"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="Plant-Based Diet">
 
             <ImageView
                 android:id="@+id/ivPreview"
@@ -29,36 +28,40 @@
                 app:tint="#4D000000"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
-            <FrameLayout
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_height="64dp"
                 app:layout_collapseMode="pin">
 
-                <ImageButton
-                    android:id="@+id/btnBack"
-                    style="@style/Button.Borderless"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="12dp"
-                    android:src="@drawable/ic_back"
-                    android:tint="@color/white" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/tvName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_diet_name"
-                    android:paddingStart="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingEnd="16dp"
-                    android:paddingBottom="8dp"
-                    android:text="Plant-Based Diet"
-                    android:textColor="@color/white"
-                    android:textSize="28sp" />
-            </FrameLayout>
+                    <ImageButton
+                        android:layout_marginStart="-8dp"
+                        android:layout_gravity="center_vertical"
+                        android:id="@+id/btnBack"
+                        style="@style/Button.Borderless"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_back"
+                        android:tint="@color/white" />
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_diet_name"
+                        android:paddingStart="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingEnd="16dp"
+                        android:paddingBottom="8dp"
+                        android:text="Plant-Based Diet"
+                        android:textColor="@color/white"
+                        android:textSize="28sp" />
+                </FrameLayout>
+            </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -68,10 +71,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:paddingBottom="72dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="72dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -104,34 +107,36 @@ Vegetables (including kale, spinach, Swiss chard, collard greens, sweet potatoes
 Fruits (such as avocado, strawberries, blueberries, watermelon, apples, grapes, bananas, grapefruit..." />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <TextView
-                android:layout_gravity="center"
-                android:textColor="@color/darker_blue"
-                android:text="Plan"
-                android:textSize="28sp"
-                android:fontFamily="sans-serif-medium"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="Plan"
+                android:textColor="@color/darker_blue"
+                android:textSize="28sp" />
+
             <androidx.recyclerview.widget.RecyclerView
-                tools:listitem="@layout/item_diet_day"
-                tools:itemCount="2"
                 android:id="@+id/rvDays"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_diet_day" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <Button
-        app:layout_behavior=".utils.BottomButtonScrollingBehavior"
-        android:layout_gravity="center|bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/darker_blue"
         android:text="Follow"
         android:textColor="@color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_behavior=".utils.BottomButtonScrollingBehavior" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
