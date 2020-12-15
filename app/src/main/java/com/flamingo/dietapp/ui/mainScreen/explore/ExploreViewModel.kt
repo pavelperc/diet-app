@@ -1,6 +1,7 @@
 package com.flamingo.dietapp.ui.mainScreen.explore
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -13,6 +14,9 @@ import com.flamingo.dietapp.repository.TestRepository
 import kotlinx.coroutines.launch
 
 class ExploreViewModel(application: Application) : AndroidViewModel(application) {
+    companion object {
+        const val TAG = "ExploreViewModel"
+    }
     sealed class DishesViewState {
         object Loading : DishesViewState()
         class Error(val e: Throwable) : DishesViewState()
@@ -43,6 +47,7 @@ class ExploreViewModel(application: Application) : AndroidViewModel(application)
                 val dishes = repository.allDishes()
                 dishesViewState.postValue(DishesViewState.Loaded(dishes))
             } catch (e: Throwable) {
+                Log.e(TAG, "loadDishes():", e)
                 dishesViewState.postValue(DishesViewState.Error(e))
             }
         }
@@ -54,6 +59,7 @@ class ExploreViewModel(application: Application) : AndroidViewModel(application)
                 val diets = repository.allDiets()
                 dietsViewState.postValue(DietsViewState.Loaded(diets))
             } catch (e: Throwable) {
+                Log.e(TAG, "loadDiets():", e)
                 dietsViewState.postValue(DietsViewState.Error(e))
             }
         }
