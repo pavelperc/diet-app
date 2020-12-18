@@ -2,6 +2,9 @@
 This is an app for healthy lifestyle.
 It allows to select the proper diet and calculate nutritional value for every dish in it. Based on American National Nutrient database.
 
+![](images/screen1.png) | ![](images/screen2.png) | ![](images/screen3.png) | ![](images/screen4.png)
+-- | -- | -- | --
+
 ## Google play
 https://play.google.com/store/apps/details?id=com.flamingo.dietapp
 
